@@ -16,8 +16,17 @@ import Footer from './components/Footer';
 
 import Home from './pages/Home';
 
-//21.3.4, 21.3.6
+//21.3.4, 21.3.6, 21.5.4
 const client = new ApolloClient({
+    request: operation => {
+        const token = localStorage.getItem('id_token');
+
+        operation.setContext({
+            headers: {
+                authorization: token ? `Bearer ${token}` : ''
+            }
+        });
+    },
     uri: '/graphql'
 });
 
