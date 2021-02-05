@@ -6,6 +6,8 @@ import { QUERY_THOUGHTS, QUERY_ME_BASIC } from '../utils/queries';
 import ThoughtList from '../components/ThoughtList';
 import Auth from '../utils/auth';
 import FriendList from '../components/FriendList';
+//21.6.4
+import ThoughtForm from '../components/ThoughtForm';
 
 const Home = () => {
     //21.3.5 use useQuery hook to make query request
@@ -31,6 +33,11 @@ const Home = () => {
     return (
         <main>
             <div className='flex-row justify-space-between'>
+                {loggedIn && (
+                    <div className="col-12 mb-3">
+                        <ThoughtForm />
+                    </div>
+                )}
                 <div className={`col-12 mb-3${loggedIn && 'col-lg-8'}`}> {
                     //21.3.5 ternary operator
                     loading
