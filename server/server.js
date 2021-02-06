@@ -1,10 +1,9 @@
-//21.3.6
-const path = require('path');
-
 //21.1.4
 const express = require('express');
 //import ApolloServer
 const { ApolloServer } = require('apollo-server-express');
+//21.3.6
+const path = require('path');
 //21.2.5
 const { authMiddleware } = require('./utils/auth');
 
