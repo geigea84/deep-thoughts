@@ -27,8 +27,8 @@ const ThoughtForm = () => {
     const [thoughtText, setText] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
     //21.6.5
-    const [adddThought, { error }] = useMutation(ADD_THOUGHT, {
-        update(cache, { data: { adddThought } }) {
+    const [addThought, { error }] = useMutation(ADD_THOUGHT, {
+        update(cache, { data: { addThought } }) {
             //could potentially not yet exist, so wrap in a try...catch
             try {
                 //read what's currently in the cache
@@ -37,7 +37,7 @@ const ThoughtForm = () => {
                 //prepend the newest thought to the front of the array
                 cache.writeQuery({
                     query: QUERY_THOUGHTS,
-                    data: { thoughts: [adddThought, ...thoughts] }
+                    data: { thoughts: [addThought, ...thoughts] }
                 });
             }
             catch (e) {
@@ -48,7 +48,7 @@ const ThoughtForm = () => {
             const { me } = cache.readQuery({ query: QUERY_ME });
             cache.writeQuery({
                 query: QUERY_ME,
-                data: { me: { ...me, thoughts: [...me.thoughts, adddThought] } }
+                data: { me: { ...me, thoughts: [...me.thoughts, addThought] } }
             });
         }
     });
@@ -65,7 +65,7 @@ const ThoughtForm = () => {
 
         try {
             //add thought to database
-            await adddThought({
+            await addThought({
                 variables: { thoughtText }
             });
 

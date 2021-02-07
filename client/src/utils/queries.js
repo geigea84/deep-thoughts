@@ -63,7 +63,7 @@ export const QUERY_USER = gql`
 //21.5.6
 export const QUERY_ME = gql`
     {
-        me{
+        me {
             _id
             username
             email
